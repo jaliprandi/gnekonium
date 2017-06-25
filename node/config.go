@@ -48,7 +48,7 @@ var (
 // all registered services.
 type Config struct {
 	// Name sets the instance name of the node. It must not contain the / character and is
-	// used in the devp2p node identifier. The instance name of geth is "gnekonium". If no
+	// used in the devp2p node identifier. The instance name of gnekonium is "gnekonium". If no
 	// value is specified, the basename of the current executable is used.
 	Name string `toml:"-"`
 

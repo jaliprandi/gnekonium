@@ -12,7 +12,7 @@ GOBIN = build/bin
 GO ?= latest
 
 gnekonium:
-	build/env.sh go run build/ci.go install ./cmd/geth
+	build/env.sh go run build/ci.go install ./cmd/gnekonium
 	@echo "Done building."
 	@echo "Run \"$(GOBIN)/gnekonium\" to launch gnekonium."
 

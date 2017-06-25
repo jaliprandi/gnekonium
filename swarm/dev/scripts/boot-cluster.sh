@@ -3,7 +3,7 @@
 # A script to boot a dev swarm cluster on a Linux host (typically in a Docker
 # container started with swarm/dev/run.sh).
 #
-# The cluster contains a bootnode, a geth node and multiple swarm nodes, with
+# The cluster contains a bootnode, a gnekonium node and multiple swarm nodes, with
 # each node having its own data directory in a base directory passed with the
 # --dir flag (default is swarm/dev/cluster).
 #
@@ -136,8 +136,8 @@ start_bootnode() {
   start_node "bootnode" "${BOOTNODE_IP}" "$(which bootnode)" ${args[@]}
 }
 
-# start_geth_node starts a geth node with --datadir pointing at <base-dir>/geth
-# and a single, unlocked account with password "geth"
+# start_geth_node starts a gnekonium node with --datadir pointing at <base-dir>/gnekonium
+# and a single, unlocked account with password "gnekonium"
 start_geth_node() {
   local dir="${base_dir}/gnekonium"
   mkdir -p "${dir}"

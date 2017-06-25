@@ -16,7 +16,7 @@
 
 // +build android
 
-package geth
+package gnekonium
 
 // clientIdentifier is a hard coded identifier to report into the network.
 var clientIdentifier = "GnekoniumDroid"
