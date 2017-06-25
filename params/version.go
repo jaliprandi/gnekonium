@@ -21,10 +21,14 @@ import (
 )
 
 const (
-	VersionMajor = 1        // Major version component of the current release
-	VersionMinor = 6        // Minor version component of the current release
-	VersionPatch = 6        // Patch version component of the current release
-	VersionMeta  = "stable" // Version metadata to append to the version string
+	VersionMajor = 1          // Major version component of the current release
+	VersionMinor = 6          // Minor version component of the current release
+<<<<<<< HEAD
+	VersionPatch = 7          // Patch version component of the current release
+=======
+	VersionPatch = 6          // Patch version component of the current release
+>>>>>>> parent of 10a45cb... params: 1.6.6 stable
+	VersionMeta  = "unstable" // Version metadata to append to the version string
 )
 
 // Version holds the textual version string.
