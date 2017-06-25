@@ -24,20 +24,20 @@ import (
 )
 
 var (
-	TestNetGenesisHash = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d") // Testnet genesis hash to enforce below configs on
-	MainNetGenesisHash = common.HexToHash("0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3") // Mainnet genesis hash to enforce below configs on
+	TestNetGenesisHash = common.HexToHash("0x86a89bcce7783fec92fce4f7b85094db7702c3afc28881aa4a64fd633ecf3526") // Testnet genesis hash to enforce below configs on
+	MainNetGenesisHash = common.HexToHash("0x1a505395bfe4b2a8eef2f80033d68228db70e82bb695dd4ffb20e6d0cf71cb73") // Mainnet genesis hash to enforce below configs on
 
-	TestNetHomesteadBlock = big.NewInt(0)       // Testnet homestead block
-	MainNetHomesteadBlock = big.NewInt(1150000) // Mainnet homestead block
+	TestNetHomesteadBlock = big.NewInt(0) // Testnet homestead block
+	MainNetHomesteadBlock = big.NewInt(0) // Mainnet homestead block
 
-	TestNetHomesteadGasRepriceBlock = big.NewInt(0)       // Testnet gas reprice block
-	MainNetHomesteadGasRepriceBlock = big.NewInt(2463000) // Mainnet gas reprice block
+	TestNetHomesteadGasRepriceBlock = big.NewInt(0) // Testnet gas reprice block
+	MainNetHomesteadGasRepriceBlock = big.NewInt(0) // Mainnet gas reprice block
 
-	TestNetHomesteadGasRepriceHash = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d") // Testnet gas reprice block hash (used by fast sync)
-	MainNetHomesteadGasRepriceHash = common.HexToHash("0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0") // Mainnet gas reprice block hash (used by fast sync)
+	TestNetHomesteadGasRepriceHash = common.HexToHash("0x86a89bcce7783fec92fce4f7b85094db7702c3afc28881aa4a64fd633ecf3526") // Testnet gas reprice block hash (used by fast sync)
+	MainNetHomesteadGasRepriceHash = common.HexToHash("0x1a505395bfe4b2a8eef2f80033d68228db70e82bb695dd4ffb20e6d0cf71cb73") // Mainnet gas reprice block hash (used by fast sync)
 
-	TestNetSpuriousDragon = big.NewInt(10)
-	MainNetSpuriousDragon = big.NewInt(2675000)
+	TestNetSpuriousDragon = big.NewInt(100)
+	MainNetSpuriousDragon = big.NewInt(100)
 
 	TestNetMetropolisBlock = big.NewInt(math.MaxInt64)
 	MainNetMetropolisBlock = big.NewInt(math.MaxInt64)
