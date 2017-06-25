@@ -28,19 +28,19 @@ RUN apt-get install -qy llvm-3.5 libedit-dev
 RUN mkdir -p /usr/lib/llvm-3.5/share/llvm && ln -s /usr/share/llvm-3.5/cmake /usr/lib/llvm-3.5/share/llvm/cmake
 
 
-# Ethereum PPA
+# Nekonium PPA
 RUN apt-get install -qy software-properties-common
-RUN add-apt-repository ppa:ethereum/ethereum
+RUN add-apt-repository ppa:nekonium/nekonium
 RUN apt-get update
 RUN apt-get install -qy libcryptopp-dev libjson-rpc-cpp-dev
 
 # this is a workaround, to make sure that docker's cache is invalidated whenever the git repo changes
-ADD https://api.github.com/repos/ethereum/cpp-ethereum/git/refs/heads/develop unused.txt 
+ADD https://api.github.com/repos/nekonium/cpp-nekonium/git/refs/heads/develop unused.txt 
 
-# Build Ethereum (HEADLESS)
-RUN git clone --depth=1 --branch develop https://github.com/ethereum/cpp-ethereum
-RUN mkdir -p cpp-ethereum/build
-RUN cd cpp-ethereum/build && cmake .. -DCMAKE_BUILD_TYPE=Debug -DVMTRACE=1 -DPARANOIA=1 -DEVMJIT=1 && make -j $(cat /proc/cpuinfo | grep processor | wc -l) && make install
+# Build Nekonium (HEADLESS)
+RUN git clone --depth=1 --branch develop https://github.com/nekonium/cpp-nekonium
+RUN mkdir -p cpp-nekonium/build
+RUN cd cpp-nekonium/build && cmake .. -DCMAKE_BUILD_TYPE=Debug -DVMTRACE=1 -DPARANOIA=1 -DEVMJIT=1 && make -j $(cat /proc/cpuinfo | grep processor | wc -l) && make install
 RUN ldconfig
 
-ENTRYPOINT ["/cpp-ethereum/build/test/checkRandomStateTest"]
+ENTRYPOINT ["/cpp-nekonium/build/test/checkRandomStateTest"]

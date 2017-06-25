@@ -93,8 +93,8 @@ var (
 	}
 	EthAPIFlag = cli.StringFlag{
 		Name:  "ethapi",
-		Usage: "URL of the Ethereum API provider",
-		Value: node.DefaultIPCEndpoint("geth"),
+		Usage: "URL of the Nekonium API provider",
+		Value: node.DefaultIPCEndpoint("gnekonium"),
 	}
 	SwarmApiFlag = cli.StringFlag{
 		Name:  "bzzapi",
@@ -139,13 +139,13 @@ func init() {
 	utils.ListenPortFlag.Value = 30399
 }
 
-var app = utils.NewApp(gitCommit, "Ethereum Swarm")
+var app = utils.NewApp(gitCommit, "Nekonium Swarm")
 
 // This init function creates the cli.App.
 func init() {
 	app.Action = bzzd
 	app.HideVersion = true // we have a command to print the version
-	app.Copyright = "Copyright 2013-2016 The go-ethereum Authors"
+	app.Copyright = "Copyright 2013-2016 The go-nekonium Authors"
 	app.Commands = []cli.Command{
 		{
 			Action:    version,

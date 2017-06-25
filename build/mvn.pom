@@ -4,13 +4,13 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.ethereum</groupId>
-  <artifactId>geth</artifactId>
+  <groupId>org.nekonium</groupId>
+  <artifactId>gnekonium</artifactId>
   <version>{{.Version}}</version>
   <packaging>aar</packaging>
 
-  <name>Android Ethereum Client</name>
-  <description>Android port of the go-ethereum libraries and node</description>
+  <name>Android Nekonium Client</name>
+  <description>Android port of the go-nekonium libraries and node</description>
   <url>https://github.com/nekonium/go-nekonium</url>
   <inceptionYear>2015</inceptionYear>
 
@@ -24,7 +24,7 @@
 
   <organization>
     <name>Ethereum</name>
-    <url>https://ethereum.org</url>
+    <url>https://github.com/nekonium</url>
   </organization>
 
   <developers>

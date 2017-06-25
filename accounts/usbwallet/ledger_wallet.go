@@ -146,12 +146,12 @@ func (w *ledgerWallet) Status() string {
 		return "Closed"
 	}
 	if w.browser {
-		return "Ethereum app in browser mode"
+		return "Nekonium app in browser mode"
 	}
 	if w.offline() {
-		return "Ethereum app offline"
+		return "Nekonium app offline"
 	}
-	return fmt.Sprintf("Ethereum app v%d.%d.%d online", w.version[0], w.version[1], w.version[2])
+	return fmt.Sprintf("Nekonium app v%d.%d.%d online", w.version[0], w.version[1], w.version[2])
 }
 
 // offline returns whether the wallet and the Ethereum app is offline or not.

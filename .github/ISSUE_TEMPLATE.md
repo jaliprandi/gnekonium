@@ -1,6 +1,6 @@
 #### System information
 
-Geth version: `geth version`
+Gnekonium version: `gnekonium version`
 OS & Version: Windows/Linux/OSX
 Commit hash : (if `develop`)
 

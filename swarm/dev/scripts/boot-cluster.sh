@@ -12,7 +12,7 @@
 # the 192.168.33.0/24 subnet:
 #
 # bootnode: 192.168.33.2
-# geth:     192.168.33.3
+# gnekonium:     192.168.33.3
 # swarm:    192.168.33.10{1,2,...,n}
 
 set -e
@@ -37,7 +37,7 @@ BOOTNODE_KEY="32078f313bea771848db70745225c52c00981589ad6b5b49163f0f5ee852617d"
 BOOTNODE_PUBKEY="760c4460e5336ac9bbd87952a3c7ec4363fc0a97bd31c86430806e287b437fd1b01abc6e1db640cf3106b520344af1d58b00b57823db3e1407cbc433e1b6d04d"
 BOOTNODE_URL="enode://${BOOTNODE_PUBKEY}@${BOOTNODE_IP}:${BOOTNODE_PORT}"
 
-# static geth configuration
+# static gnekonium configuration
 GETH_IP="192.168.33.3"
 GETH_RPC_PORT="8293"
 GETH_RPC_URL="http://${GETH_IP}:${GETH_RPC_PORT}"
@@ -121,7 +121,7 @@ create_network() {
   ip address add "${subnet}" dev "${BRIDGE_NAME}"
 }
 
-# start_bootnode starts a bootnode which is used to bootstrap the geth and
+# start_bootnode starts a bootnode which is used to bootstrap the gnekonium and
 # swarm nodes
 start_bootnode() {
   local key_file="${base_dir}/bootnode.key"
@@ -139,22 +139,22 @@ start_bootnode() {
 # start_geth_node starts a geth node with --datadir pointing at <base-dir>/geth
 # and a single, unlocked account with password "geth"
 start_geth_node() {
-  local dir="${base_dir}/geth"
+  local dir="${base_dir}/gnekonium"
   mkdir -p "${dir}"
 
-  local password="geth"
+  local password="gnekonium"
   echo "${password}" > "${dir}/password"
 
   # create an account if necessary
   if [[ ! -e "${dir}/keystore" ]]; then
-    info "creating geth account"
+    info "creating gnekonium account"
     create_account "${dir}" "${password}"
   fi
 
   # get the account address
   local address="$(jq --raw-output '.address' ${dir}/keystore/*)"
   if [[ -z "${address}" ]]; then
-    fail "failed to get geth account address"
+    fail "failed to get gnekonium account address"
   fi
 
   local args=(
@@ -169,7 +169,7 @@ start_geth_node() {
     --verbosity "6"
   )
 
-  start_node "geth" "${GETH_IP}" "$(which geth)" ${args[@]}
+  start_node "gnekonium" "${GETH_IP}" "$(which gnekonium)" ${args[@]}
 }
 
 start_swarm_nodes() {
@@ -282,7 +282,7 @@ create_account() {
   local dir=$1
   local password=$2
 
-  geth --datadir "${dir}" --password /dev/stdin account new <<< "${password}"
+  gnekonium --datadir "${dir}" --password /dev/stdin account new <<< "${password}"
 }
 
 main "$@"

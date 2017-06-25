@@ -28,12 +28,12 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
+	"github.com/naoina/toml"
 	"github.com/nekonium/go-nekonium/cmd/utils"
 	"github.com/nekonium/go-nekonium/contracts/release"
 	"github.com/nekonium/go-nekonium/eth"
 	"github.com/nekonium/go-nekonium/node"
 	"github.com/nekonium/go-nekonium/params"
-	"github.com/naoina/toml"
 )
 
 var (
@@ -99,9 +99,9 @@ func defaultNodeConfig() node.Config {
 	cfg := node.DefaultConfig
 	cfg.Name = clientIdentifier
 	cfg.Version = params.VersionWithCommit(gitCommit)
-	cfg.HTTPModules = append(cfg.HTTPModules, "eth")
-	cfg.WSModules = append(cfg.WSModules, "eth")
-	cfg.IPCPath = "geth.ipc"
+	cfg.HTTPModules = append(cfg.HTTPModules, "eth", "nekonium")
+	cfg.WSModules = append(cfg.WSModules, "eth", "nekonium")
+	cfg.IPCPath = "gnekonium.ipc"
 	return cfg
 }
 
