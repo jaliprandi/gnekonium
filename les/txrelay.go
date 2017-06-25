@@ -19,8 +19,8 @@ package les
 import (
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core/types"
 )
 
 type ltrInfo struct {

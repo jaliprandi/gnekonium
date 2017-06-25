@@ -27,13 +27,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/nekonium/go-nekonium/common/mclock"
+	"github.com/nekonium/go-nekonium/ethdb"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/p2p"
+	"github.com/nekonium/go-nekonium/p2p/discover"
+	"github.com/nekonium/go-nekonium/p2p/discv5"
+	"github.com/nekonium/go-nekonium/rlp"
 )
 
 const (

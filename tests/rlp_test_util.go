@@ -26,7 +26,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/nekonium/go-nekonium/rlp"
 )
 
 // RLPTest is the JSON structure of a single RLP test.

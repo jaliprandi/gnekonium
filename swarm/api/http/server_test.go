@@ -23,9 +23,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/swarm/storage"
-	"github.com/ethereum/go-ethereum/swarm/testutil"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/swarm/storage"
+	"github.com/nekonium/go-nekonium/swarm/testutil"
 )
 
 func TestBzzrGetPath(t *testing.T) {

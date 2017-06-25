@@ -22,12 +22,12 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/ethdb"
+	"github.com/nekonium/go-nekonium/event"
+	"github.com/nekonium/go-nekonium/rpc"
 )
 
 type Backend interface {

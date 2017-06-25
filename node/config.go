@@ -25,14 +25,14 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/accounts/usbwallet"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/discover"
+	"github.com/nekonium/go-nekonium/accounts"
+	"github.com/nekonium/go-nekonium/accounts/keystore"
+	"github.com/nekonium/go-nekonium/accounts/usbwallet"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/crypto"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/p2p"
+	"github.com/nekonium/go-nekonium/p2p/discover"
 )
 
 var (

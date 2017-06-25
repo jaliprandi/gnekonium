@@ -31,13 +31,13 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rlp"
+	ethereum "github.com/nekonium/go-nekonium"
+	"github.com/nekonium/go-nekonium/accounts"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/common/hexutil"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/rlp"
 	"github.com/karalabe/hid"
 )
 

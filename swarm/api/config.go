@@ -24,11 +24,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/swarm/network"
-	"github.com/ethereum/go-ethereum/swarm/services/swap"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/crypto"
+	"github.com/nekonium/go-nekonium/swarm/network"
+	"github.com/nekonium/go-nekonium/swarm/services/swap"
+	"github.com/nekonium/go-nekonium/swarm/storage"
 )
 
 const (

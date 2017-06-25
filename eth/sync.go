@@ -21,11 +21,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/eth/downloader"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/p2p/discover"
 )
 
 const (

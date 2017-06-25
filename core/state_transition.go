@@ -21,11 +21,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/common/math"
+	"github.com/nekonium/go-nekonium/core/vm"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/params"
 )
 
 var (

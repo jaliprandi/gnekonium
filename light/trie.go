@@ -19,9 +19,9 @@ package light
 import (
 	"context"
 
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/nekonium/go-nekonium/crypto"
+	"github.com/nekonium/go-nekonium/ethdb"
+	"github.com/nekonium/go-nekonium/trie"
 )
 
 // LightTrie is an ODR-capable wrapper around trie.SecureTrie

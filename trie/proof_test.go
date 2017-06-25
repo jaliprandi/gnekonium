@@ -23,8 +23,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/rlp"
 )
 
 func init() {

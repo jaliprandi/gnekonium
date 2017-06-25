@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/nekonium/go-nekonium"
+	"github.com/nekonium/go-nekonium/event"
+	"github.com/nekonium/go-nekonium/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.

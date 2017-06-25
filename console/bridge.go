@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/nekonium/go-nekonium/log"
+	"github.com/nekonium/go-nekonium/rpc"
 	"github.com/robertkrimen/otto"
 )
 

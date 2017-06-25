@@ -24,12 +24,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/les/flowcontrol"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/eth"
+	"github.com/nekonium/go-nekonium/les/flowcontrol"
+	"github.com/nekonium/go-nekonium/p2p"
+	"github.com/nekonium/go-nekonium/rlp"
 )
 
 var (

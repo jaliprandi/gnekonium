@@ -24,17 +24,17 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/ethstats"
-	"github.com/ethereum/go-ethereum/les"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/params"
-	whisper "github.com/ethereum/go-ethereum/whisper/whisperv5"
+	"github.com/nekonium/go-nekonium/core"
+	"github.com/nekonium/go-nekonium/eth"
+	"github.com/nekonium/go-nekonium/eth/downloader"
+	"github.com/nekonium/go-nekonium/ethclient"
+	"github.com/nekonium/go-nekonium/ethstats"
+	"github.com/nekonium/go-nekonium/les"
+	"github.com/nekonium/go-nekonium/node"
+	"github.com/nekonium/go-nekonium/p2p"
+	"github.com/nekonium/go-nekonium/p2p/nat"
+	"github.com/nekonium/go-nekonium/params"
+	whisper "github.com/nekonium/go-nekonium/whisper/whisperv5"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Geth

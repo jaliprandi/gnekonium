@@ -41,7 +41,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/nekonium/go-nekonium/crypto"
 )
 
 var dumpEnc bool

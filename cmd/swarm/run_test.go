@@ -27,12 +27,12 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/internal/cmdtest"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/swarm"
+	"github.com/nekonium/go-nekonium/accounts/keystore"
+	"github.com/nekonium/go-nekonium/internal/cmdtest"
+	"github.com/nekonium/go-nekonium/node"
+	"github.com/nekonium/go-nekonium/p2p"
+	"github.com/nekonium/go-nekonium/rpc"
+	"github.com/nekonium/go-nekonium/swarm"
 )
 
 func init() {

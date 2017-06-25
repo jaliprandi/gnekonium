@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core"
+	"github.com/nekonium/go-nekonium/core/state"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/ethdb"
 )
 
 func makeTestState() (common.Hash, ethdb.Database) {

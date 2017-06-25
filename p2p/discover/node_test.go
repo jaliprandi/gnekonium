@@ -27,8 +27,8 @@ import (
 	"testing/quick"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/crypto"
 )
 
 func ExampleNewNode() {

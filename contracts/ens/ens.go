@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/ens/contract"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/nekonium/go-nekonium/accounts/abi/bind"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/contracts/ens/contract"
+	"github.com/nekonium/go-nekonium/core/types"
+	"github.com/nekonium/go-nekonium/crypto"
 )
 
 // swarm domain name registry and resolver

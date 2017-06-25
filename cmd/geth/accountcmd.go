@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/console"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/nekonium/go-nekonium/accounts"
+	"github.com/nekonium/go-nekonium/accounts/keystore"
+	"github.com/nekonium/go-nekonium/cmd/utils"
+	"github.com/nekonium/go-nekonium/console"
+	"github.com/nekonium/go-nekonium/crypto"
+	"github.com/nekonium/go-nekonium/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

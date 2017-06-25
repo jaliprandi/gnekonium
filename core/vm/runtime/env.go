@@ -19,10 +19,10 @@ package runtime
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/vm"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/core"
+	"github.com/nekonium/go-nekonium/core/state"
+	"github.com/nekonium/go-nekonium/core/vm"
 )
 
 func NewEnv(cfg *Config, state *state.StateDB) *vm.EVM {

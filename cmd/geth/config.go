@@ -28,11 +28,11 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/contracts/release"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/nekonium/go-nekonium/cmd/utils"
+	"github.com/nekonium/go-nekonium/contracts/release"
+	"github.com/nekonium/go-nekonium/eth"
+	"github.com/nekonium/go-nekonium/node"
+	"github.com/nekonium/go-nekonium/params"
 	"github.com/naoina/toml"
 )
 

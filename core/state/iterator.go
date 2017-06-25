@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/nekonium/go-nekonium/common"
+	"github.com/nekonium/go-nekonium/rlp"
+	"github.com/nekonium/go-nekonium/trie"
 )
 
 // NodeIterator is an iterator to traverse the entire state trie post-order,
