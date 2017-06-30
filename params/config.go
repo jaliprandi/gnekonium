@@ -27,6 +27,7 @@ var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
 		ChainId:         MainNetChainID,
+		NekoniumFork01:  MainNetNekoniumFork01,
 		HomesteadBlock:  MainNetHomesteadBlock,
 		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
@@ -35,13 +36,13 @@ var (
 		EIP155Block:     MainNetSpuriousDragon,
 		EIP158Block:     MainNetSpuriousDragon,
 		MetropolisBlock: MainNetMetropolisBlock,
-
-		Ethash: new(EthashConfig),
+		Ethash:          new(EthashConfig),
 	}
 
 	// TestnetChainConfig contains the chain parameters to run a node on the Ropsten test network.
 	TestnetChainConfig = &ChainConfig{
 		ChainId:         TestNetChainID,
+		NekoniumFork01:  TestNetNekoniumFork01, //Nekonium EXT
 		HomesteadBlock:  TestNetHomesteadBlock,
 		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
@@ -57,6 +58,7 @@ var (
 	// RinkebyChainConfig contains the chain parameters to run a node on the Rinkeby test network.
 	RinkebyChainConfig = &ChainConfig{
 		ChainId:         big.NewInt(4),
+		NekoniumFork01:  TestNetNekoniumFork01,
 		HomesteadBlock:  big.NewInt(1),
 		DAOForkBlock:    nil,
 		DAOForkSupport:  true,
@@ -80,8 +82,8 @@ var (
 	// means that all fields must be set at all times. This forces
 	// anyone adding flags to the config to also have to set these
 	// fields.
-	AllProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), new(EthashConfig), nil}
-	TestChainConfig    = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), nil, new(EthashConfig), nil}
+	AllProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), new(EthashConfig), nil}
+	TestChainConfig    = &ChainConfig{big.NewInt(1), big.NewInt(0), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), nil, new(EthashConfig), nil}
 	TestRules          = TestChainConfig.Rules(new(big.Int))
 )
 
@@ -93,6 +95,7 @@ var (
 type ChainConfig struct {
 	ChainId *big.Int `json:"chainId"` // Chain id identifies the current chain and is used for replay protection
 
+	NekoniumFork01 *big.Int `json:"nekoniumFork01,omitempty"` // Nekonium switch block (nil = no fork, 0 = already pached)
 	HomesteadBlock *big.Int `json:"homesteadBlock,omitempty"` // Homestead switch block (nil = no fork, 0 = already homestead)
 	DAOForkBlock   *big.Int `json:"daoForkBlock,omitempty"`   // TheDAO hard-fork switch block (nil = no fork)
 	DAOForkSupport bool     `json:"daoForkSupport,omitempty"` // Whether the nodes supports or opposes the DAO hard-fork
@@ -141,8 +144,9 @@ func (c *ChainConfig) String() string {
 	default:
 		engine = "unknown"
 	}
-	return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Metropolis: %v Engine: %v}",
+	return fmt.Sprintf("{ChainID: %v NukoFork01: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Metropolis: %v Engine: %v}",
 		c.ChainId,
+		c.NekoniumFork01,
 		c.HomesteadBlock,
 		c.DAOForkBlock,
 		c.DAOForkSupport,
@@ -152,6 +156,11 @@ func (c *ChainConfig) String() string {
 		c.MetropolisBlock,
 		engine,
 	)
+}
+
+// IsNekoniumFork01 Fork is.
+func (c *ChainConfig) IsNekoniumFork01(num *big.Int) bool {
+	return isForked(c.NekoniumFork01, num)
 }
 
 // IsHomestead returns whether num is either equal to the homestead block or greater.
@@ -216,6 +225,9 @@ func (c *ChainConfig) CheckCompatible(newcfg *ChainConfig, height uint64) *Confi
 }
 
 func (c *ChainConfig) checkCompatible(newcfg *ChainConfig, head *big.Int) *ConfigCompatError {
+	if isForkIncompatible(c.NekoniumFork01, newcfg.NekoniumFork01, head) {
+		return newCompatError("NekoniumFork01 block", c.NekoniumFork01, newcfg.NekoniumFork01)
+	}
 	if isForkIncompatible(c.HomesteadBlock, newcfg.HomesteadBlock, head) {
 		return newCompatError("Homestead fork block", c.HomesteadBlock, newcfg.HomesteadBlock)
 	}
@@ -305,6 +317,7 @@ func (err *ConfigCompatError) Error() string {
 // phases.
 type Rules struct {
 	ChainId                                   *big.Int
+	IsNekoniumFork01                          bool
 	IsHomestead, IsEIP150, IsEIP155, IsEIP158 bool
 	IsMetropolis                              bool
 }
@@ -314,5 +327,8 @@ func (c *ChainConfig) Rules(num *big.Int) Rules {
 	if chainId == nil {
 		chainId = new(big.Int)
 	}
-	return Rules{ChainId: new(big.Int).Set(chainId), IsHomestead: c.IsHomestead(num), IsEIP150: c.IsEIP150(num), IsEIP155: c.IsEIP155(num), IsEIP158: c.IsEIP158(num), IsMetropolis: c.IsMetropolis(num)}
+	return Rules{
+		ChainId:          new(big.Int).Set(chainId),
+		IsNekoniumFork01: c.IsNekoniumFork01(num),
+		IsHomestead:      c.IsHomestead(num), IsEIP150: c.IsEIP150(num), IsEIP155: c.IsEIP155(num), IsEIP158: c.IsEIP158(num), IsMetropolis: c.IsMetropolis(num)}
 }

@@ -45,3 +45,9 @@ var (
 	TestNetChainID = big.NewInt(3) // Test net default chain ID
 	MainNetChainID = big.NewInt(1) // main net default chain ID
 )
+
+var (
+	//Homested難易度計算のHFです。Homestedフォークよりも大きい値をセットしてください。
+	MainNetNekoniumFork01 = big.NewInt(7777)
+	TestNetNekoniumFork01 = big.NewInt(1)
+)

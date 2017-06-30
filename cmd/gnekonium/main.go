@@ -39,7 +39,7 @@ import (
 )
 
 const (
-	nekoniumDevVersion = "20170630-1"
+	nekoniumDevVersion = "NEKONIUM-HF1-7777"
 )
 const (
 	clientIdentifier = "gnekonium" // Client identifier to advertise over the network
