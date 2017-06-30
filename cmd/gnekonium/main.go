@@ -39,6 +39,9 @@ import (
 )
 
 const (
+	nekoniumDevVersion = "20170630-1"
+)
+const (
 	clientIdentifier = "gnekonium" // Client identifier to advertise over the network
 )
 
@@ -202,6 +205,7 @@ func gnekonium(ctx *cli.Context) error {
 // it unlocks any requested accounts, and starts the RPC/IPC interfaces and the
 // miner.
 func startNode(ctx *cli.Context, stack *node.Node) {
+	log.Info("Nekonium Dev_VER: " + nekoniumDevVersion)
 	// Start up the node itself
 	utils.StartNode(stack)
 
