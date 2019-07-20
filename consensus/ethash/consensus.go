@@ -38,7 +38,8 @@ import (
 
 // Ethash proof-of-work protocol constants.
 var (
-	FrontierBlockReward       = big.NewInt(5e+18) // Block reward in wei for successfully mining a block
+	FrontierBlockReward       = big.NewInt(7.5e+18) // Block reward in wei for successfully mining a block
+	// TODO Nekonium
 	ByzantiumBlockReward      = big.NewInt(3e+18) // Block reward in wei for successfully mining a block upward from Byzantium
 	ConstantinopleBlockReward = big.NewInt(2e+18) // Block reward in wei for successfully mining a block upward from Constantinople
 	maxUncles                 = 2                 // Maximum number of uncles allowed in a single block
@@ -315,6 +316,8 @@ func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Heade
 		return calcDifficultyConstantinople(time, parent)
 	case config.IsByzantium(next):
 		return calcDifficultyByzantium(time, parent)
+	case config.IsNekoniumDiff(next):
+		return calcDifficultyNekoniumDiff(time, parent)
 	case config.IsHomestead(next):
 		return calcDifficultyHomestead(time, parent)
 	default:
@@ -441,6 +444,69 @@ func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
 		y.Exp(big2, y, nil)
 		x.Add(x, y)
 	}
+	return x
+}
+
+// Nekonium: Nekonium specific difficulty calculation.
+var (
+	//Average block time = (ShiftSec+RangeSec*2)/2
+	nekoniumHF01RangeSec = big.NewInt(10)
+	nekoniumHF01ShiftSec = big.NewInt(19 - 10)
+	nekoniumHF01DiffDiv  = big.NewInt(1024)
+)
+// calcDifficultyNekoniumDiff is the difficulty adjustment algorithm. It returns the
+// difficulty that a new block should have when created at time given the parent
+// block's time and difficulty. The calculation uses the Frontier rules.
+func calcDifficultyNekoniumDiff(time uint64, parent *types.Header) *big.Int {
+	bigParentTime := new(big.Int).SetUint64(parent.Time)
+	bigTime := new(big.Int)
+	{
+		a := new(big.Int).SetUint64(time)
+		a.Sub(a, nekoniumHF01ShiftSec)
+		if a.Cmp(bigParentTime) < 0 {
+			//time<bigParentTime then set bigParentTime
+			bigTime.Set(bigParentTime)
+		} else {
+			//time>=bigParentTime then set time-shift
+			bigTime.Set(a)
+		}
+	}
+
+	// holds intermediate values to make the algo easier to read & audit
+	x := new(big.Int)
+	y := new(big.Int)
+
+	// 1 - (block_timestamp -parent_timestamp) // 10
+	x.Sub(bigTime, bigParentTime)
+	x.Div(x, nekoniumHF01RangeSec)
+	x.Sub(common.Big1, x)
+
+	// max(1 - (block_timestamp - parent_timestamp) // 10, -99)))
+	if x.Cmp(bigMinus99) < 0 {
+		x.Set(bigMinus99)
+	}
+	// (parent_diff + parent_diff // 2048 * max(1 - (block_timestamp - parent_timestamp) // 10, -99))
+	y.Div(parent.Difficulty, nekoniumHF01DiffDiv)
+	x.Mul(y, x)
+	x.Add(parent.Difficulty, x)
+
+	// minimum difficulty can ever be (before exponential factor)
+	if x.Cmp(params.MinimumDifficulty) < 0 {
+		x.Set(params.MinimumDifficulty)
+	}
+	// Nekonium: Removing BOM
+	// // for the exponential factor
+	// periodCount := new(big.Int).Add(parentNumber, common.Big1)
+	// periodCount.Div(periodCount, expDiffPeriod)
+
+	// // the exponential factor, commonly referred to as "the bomb"
+	// // diff = diff + 2^(periodCount - 2)
+	// if periodCount.Cmp(common.Big1) > 0 {
+	// 	y.Sub(periodCount, nekoniumExpSub)
+	// 	y.Exp(common.Big2, y, nil)
+	// 	x.Add(x, y)
+	// 	fmt.Printf("#%d\t%d\t%d\t%d\n", parentNumber, periodCount.Int64(), y.Int64(), x.Int64())
+	// }
 	return x
 }
 
