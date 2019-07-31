@@ -143,7 +143,7 @@ Docker:
 
 ```shell
 docker run -d --name ethereum-node -v /Users/alice/ethereum:/root \
-           -p 8545:8545 -p 30303:30303 \
+           -p 8293:8293 -p 28568:28568 \
            ethereum/client-go
 ```
 
@@ -174,12 +174,12 @@ HTTP based JSON-RPC API options:
 
   * `--rpc` Enable the HTTP-RPC server
   * `--rpcaddr` HTTP-RPC server listening interface (default: `localhost`)
-  * `--rpcport` HTTP-RPC server listening port (default: `8545`)
+  * `--rpcport` HTTP-RPC server listening port (default: `8293`)
   * `--rpcapi` API's offered over the HTTP-RPC interface (default: `eth,net,web3`)
   * `--rpccorsdomain` Comma separated list of domains from which to accept cross origin requests (browser enforced)
   * `--ws` Enable the WS-RPC server
   * `--wsaddr` WS-RPC server listening interface (default: `localhost`)
-  * `--wsport` WS-RPC server listening port (default: `8546`)
+  * `--wsport` WS-RPC server listening port (default: `8294`)
   * `--wsapi` API's offered over the WS-RPC interface (default: `eth,net,web3`)
   * `--wsorigins` Origins from which to accept websockets requests
   * `--ipcdisable` Disable the IPC-RPC server
