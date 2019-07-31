@@ -812,7 +812,7 @@ func (api *RetestethAPI) StorageRangeAt(ctx context.Context,
 }
 
 func (api *RetestethAPI) ClientVersion(ctx context.Context) (string, error) {
-	return "Geth-" + params.VersionWithCommit(gitCommit, gitDate), nil
+	return "Gnek-" + params.VersionWithCommit(gitCommit, gitDate), nil
 }
 
 // splitAndTrim splits input separated by a comma

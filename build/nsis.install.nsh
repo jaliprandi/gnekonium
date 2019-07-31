@@ -1,4 +1,4 @@
-Name "geth ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
+Name "gnek ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
 InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
@@ -19,23 +19,23 @@ Section "Geth" GETH_IDX
 
   # Create start menu launcher
   createDirectory "$SMPROGRAMS\${APPNAME}"
-  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\geth.exe" "--fast" "--cache=512"
-  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\geth.exe" "attach" "" ""
+  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\gnek.exe" "--fast" "--cache=512"
+  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\gnek.exe" "attach" "" ""
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "" ""
 
   # Firewall - remove rules (if exists)
-  SimpleFC::AdvRemoveRule "Geth incoming peers (TCP:28568)"
-  SimpleFC::AdvRemoveRule "Geth outgoing peers (TCP:28568)"
-  SimpleFC::AdvRemoveRule "Geth UDP discovery (UDP:28568)"
+  SimpleFC::AdvRemoveRule "Gnek incoming peers (TCP:28568)"
+  SimpleFC::AdvRemoveRule "Gnek outgoing peers (TCP:28568)"
+  SimpleFC::AdvRemoveRule "Gnek UDP discovery (UDP:28568)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Geth incoming peers (TCP:28568)" ""  6 1 1 2147483647 1 "$INSTDIR\geth.exe" "" "" "Ethereum" 28568 "" "" ""
-  SimpleFC::AdvAddRule "Geth outgoing peers (TCP:28568)" ""  6 2 1 2147483647 1 "$INSTDIR\geth.exe" "" "" "Ethereum" "" 28568 "" ""
-  SimpleFC::AdvAddRule "Geth UDP discovery (UDP:28568)" "" 17 2 1 2147483647 1 "$INSTDIR\geth.exe" "" "" "Ethereum" "" 28568 "" ""
+  SimpleFC::AdvAddRule "Gnek incoming peers (TCP:28568)" ""  6 1 1 2147483647 1 "$INSTDIR\gnek.exe" "" "" "Ethereum" 28568 "" "" ""
+  SimpleFC::AdvAddRule "Gnek outgoing peers (TCP:28568)" ""  6 2 1 2147483647 1 "$INSTDIR\gnek.exe" "" "" "Ethereum" "" 28568 "" ""
+  SimpleFC::AdvAddRule "Gnek UDP discovery (UDP:28568)" "" 17 2 1 2147483647 1 "$INSTDIR\gnek.exe" "" "" "Ethereum" "" 28568 "" ""
 
   # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\geth.ipc"
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\geth.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gnek.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\gnek.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"
