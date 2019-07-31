@@ -29,7 +29,7 @@ import (
 var (
 	// Nekonium: Changed mainnet and testnet hash
 	MainnetGenesisHash = common.HexToHash("0x1a505395bfe4b2a8eef2f80033d68228db70e82bb695dd4ffb20e6d0cf71cb73")
-	TestnetGenesisHash = common.HexToHash("0x86a89bcce7783fec92fce4f7b85094db7702c3afc28881aa4a64fd633ecf3526")
+	TestnetGenesisHash = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d")
 	// TODO Nekonium
 	RinkebyGenesisHash = common.HexToHash("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177")
 	GoerliGenesisHash  = common.HexToHash("0xbf7e331f7f7c1dd2e05159666b3bf8bc7a8a3a9eb1d518969eab529dd9b88c1a")
