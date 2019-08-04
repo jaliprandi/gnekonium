@@ -38,19 +38,19 @@ var (
 // TrustedCheckpoints associates each known checkpoint with the genesis hash of
 // the chain it belongs to.
 var TrustedCheckpoints = map[common.Hash]*TrustedCheckpoint{
-	MainnetGenesisHash: MainnetTrustedCheckpoint,
-	TestnetGenesisHash: TestnetTrustedCheckpoint,
-	RinkebyGenesisHash: RinkebyTrustedCheckpoint,
-	GoerliGenesisHash:  GoerliTrustedCheckpoint,
+	// MainnetGenesisHash: MainnetTrustedCheckpoint,
+	// TestnetGenesisHash: TestnetTrustedCheckpoint,
+	// RinkebyGenesisHash: RinkebyTrustedCheckpoint,
+	// GoerliGenesisHash:  GoerliTrustedCheckpoint,
 }
 
 // CheckpointOracles associates each known checkpoint oracles with the genesis hash of
 // the chain it belongs to.
 var CheckpointOracles = map[common.Hash]*CheckpointOracleConfig{
-	MainnetGenesisHash: MainnetCheckpointOracle,
-	TestnetGenesisHash: TestnetCheckpointOracle,
-	RinkebyGenesisHash: RinkebyCheckpointOracle,
-	GoerliGenesisHash:  GoerliCheckpointOracle,
+	// MainnetGenesisHash: MainnetCheckpointOracle,
+	// TestnetGenesisHash: TestnetCheckpointOracle,
+	// RinkebyGenesisHash: RinkebyCheckpointOracle,
+	// GoerliGenesisHash:  GoerliCheckpointOracle,
 }
 
 var (
