@@ -34,8 +34,8 @@ Section "Geth" GETH_IDX
   SimpleFC::AdvAddRule "Gnek UDP discovery (UDP:28568)" "" 17 2 1 2147483647 1 "$INSTDIR\gnek.exe" "" "" "Ethereum" "" 28568 "" ""
 
   # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gnek.ipc"
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\gnek.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gnekonium.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\gnekonium.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"
