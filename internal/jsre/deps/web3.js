@@ -1021,7 +1021,7 @@ var formatOutputInt = function (param) {
     var value = param.staticPart() || "0";
 
     // check if it's negative number
-    // it is, return two's complement
+        // it it is, return two's complement
     if (signedIsNegative(value)) {
         return new BigNumber(value, 16).minus(new BigNumber('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 16)).minus(1);
     }
@@ -1768,27 +1768,28 @@ var ETH_UNITS = [
     'Gwei',
     'szabo',
     'finney',
-    'femtoether',
-    'picoether',
-    'nanoether',
-    'microether',
-    'milliether',
+        'femtonuko',
+        'piconuko',
+        'nanonuko',
+        'micronuko',
+        'millinuko',
     'nano',
     'micro',
     'milli',
+        'nuko',
     'ether',
     'grand',
-    'Mether',
-    'Gether',
-    'Tether',
-    'Pether',
-    'Eether',
-    'Zether',
-    'Yether',
-    'Nether',
-    'Dether',
-    'Vether',
-    'Uether'
+        'Mnuko',
+        'Gnuko',
+        'Tnuko',
+        'Pnuko',
+        'Enuko',
+        'Znuko',
+        'Ynuko',
+        'Nnuko',
+        'Dnuko',
+        'Vnuko',
+        'Unuko'
 ];
 
 module.exports = {
@@ -1884,33 +1885,34 @@ var sha3 = require('./sha3.js');
 var utf8 = require('utf8');
 
 var unitMap = {
-    'noether':      '0',
+        'nonuko':      '0',    
     'wei':          '1',
     'kwei':         '1000',
     'Kwei':         '1000',
     'babbage':      '1000',
-    'femtoether':   '1000',
+        'femtonuko':   '1000',
     'mwei':         '1000000',
     'Mwei':         '1000000',
     'lovelace':     '1000000',
-    'picoether':    '1000000',
+        'piconuko':    '1000000',
     'gwei':         '1000000000',
     'Gwei':         '1000000000',
     'shannon':      '1000000000',
-    'nanoether':    '1000000000',
+        'nanonuko':    '1000000000',
     'nano':         '1000000000',
     'szabo':        '1000000000000',
-    'microether':   '1000000000000',
+        'micronuko':   '1000000000000',
     'micro':        '1000000000000',
     'finney':       '1000000000000000',
-    'milliether':    '1000000000000000',
+        'millinuko':    '1000000000000000',
     'milli':         '1000000000000000',
-    'ether':        '1000000000000000000',
-    'kether':       '1000000000000000000000',
+        'nuko':        '1000000000000000000',
+        'ether':       '1000000000000000000',
+        'knuko':       '1000000000000000000000',
     'grand':        '1000000000000000000000',
-    'mether':       '1000000000000000000000000',
-    'gether':       '1000000000000000000000000000',
-    'tether':       '1000000000000000000000000000000'
+        'mnuko':       '1000000000000000000000000',
+        'gnuko':       '1000000000000000000000000000',
+        'tnuko':       '1000000000000000000000000000000'
 };
 
 /**
@@ -2104,7 +2106,7 @@ var toHex = function (val) {
     if (isBigNumber(val))
         return fromDecimal(val);
 
-    if (typeof val === 'object')
+        if (isObject(val))
         return fromUtf8(JSON.stringify(val));
 
     // if its a negative number, pass it through fromDecimal
@@ -2193,7 +2195,7 @@ var toWei = function(number, unit) {
 };
 
 /**
- * Takes an input and transforms it into a bignumber
+     * Takes an input and transforms it into an bignumber
  *
  * @method toBigNumber
  * @param {Number|String|BigNumber} a number, string, HEX string or BigNumber
@@ -2250,7 +2252,7 @@ var isAddress = function (address) {
         // check if it has the basic requirements of an address
         return false;
     } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
-        // If it's all small caps or all caps, return true
+            // If it's all small caps or all all caps, return true
         return true;
     } else {
         // Otherwise check each case
@@ -2258,6 +2260,8 @@ var isAddress = function (address) {
     }
 };
 
+    
+    
 /**
  * Checks if the given string is a checksummed address
  *
@@ -2368,7 +2372,7 @@ var isFunction = function (object) {
  * @return {Boolean}
  */
 var isObject = function (object) {
-    return object !== null && !(object instanceof Array) && typeof object === 'object';
+        return typeof object === 'object';
 };
 
 /**
@@ -2408,38 +2412,6 @@ var isJson = function (str) {
     }
 };
 
-/**
- * Returns true if given string is a valid Ethereum block header bloom.
- *
- * @method isBloom
- * @param {String} hex encoded bloom filter
- * @return {Boolean}
- */
-var isBloom = function (bloom) {
-    if (!/^(0x)?[0-9a-f]{512}$/i.test(bloom)) {
-        return false;
-    } else if (/^(0x)?[0-9a-f]{512}$/.test(bloom) || /^(0x)?[0-9A-F]{512}$/.test(bloom)) {
-        return true;
-    }
-    return false;
-};
-
-/**
- * Returns true if given string is a valid log topic.
- *
- * @method isTopic
- * @param {String} hex encoded topic
- * @return {Boolean}
- */
-var isTopic = function (topic) {
-    if (!/^(0x)?[0-9a-f]{64}$/i.test(topic)) {
-        return false;
-    } else if (/^(0x)?[0-9a-f]{64}$/.test(topic) || /^(0x)?[0-9A-F]{64}$/.test(topic)) {
-        return true;
-    }
-    return false;
-};
-
 module.exports = {
     padLeft: padLeft,
     padRight: padRight,
@@ -2468,14 +2440,12 @@ module.exports = {
     isObject: isObject,
     isBoolean: isBoolean,
     isArray: isArray,
-    isJson: isJson,
-    isBloom: isBloom,
-    isTopic: isTopic,
+        isJson: isJson
 };
 
 },{"./sha3.js":19,"bignumber.js":"bignumber.js","utf8":85}],21:[function(require,module,exports){
 module.exports={
-    "version": "0.20.1"
+        "version": "0.18.1"
 }
 
 },{}],22:[function(require,module,exports){
@@ -2581,8 +2551,6 @@ Web3.prototype.isAddress = utils.isAddress;
 Web3.prototype.isChecksumAddress = utils.isChecksumAddress;
 Web3.prototype.toChecksumAddress = utils.toChecksumAddress;
 Web3.prototype.isIBAN = utils.isIBAN;
-Web3.prototype.padLeft = utils.padLeft;
-Web3.prototype.padRight = utils.padRight;
 
 
 Web3.prototype.sha3 = function(string, options) {
@@ -2609,7 +2577,7 @@ var properties = function () {
             inputFormatter: utils.toDecimal
         }),
         new Property({
-            name: 'version.ethereum',
+                name: 'version.nekonium',
             getter: 'eth_protocolVersion',
             inputFormatter: utils.toDecimal
         }),
@@ -2711,7 +2679,7 @@ AllSolidityEvents.prototype.execute = function (options, callback) {
 
     var o = this.encode(options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
+        return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
 };
 
 AllSolidityEvents.prototype.attachToContract = function (contract) {
@@ -2970,8 +2938,6 @@ var ContractFactory = function (eth, abi) {
      * @returns {Contract} returns contract instance
      */
     this.new = function () {
-        /*jshint maxcomplexity: 7 */
-        
         var contract = new Contract(this.eth, this.abi);
 
         // parse arguments
@@ -3126,11 +3092,8 @@ module.exports = ContractFactory;
  */
 
 module.exports = {
-    InvalidNumberOfSolidityArgs: function () {
-        return new Error('Invalid number of arguments to Solidity function');
-    },
-    InvalidNumberOfRPCParams: function () {
-        return new Error('Invalid number of input parameters to RPC method');
+        InvalidNumberOfParams: function () {
+            return new Error('Invalid number of input parameters');
     },
     InvalidConnection: function (host){
         return new Error('CONNECTION ERROR: Couldn\'t connect to node '+ host +'.');
@@ -3336,7 +3299,7 @@ SolidityEvent.prototype.execute = function (indexed, options, callback) {
 
     var o = this.encode(indexed, options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
+        return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
 };
 
 /**
@@ -3459,18 +3422,13 @@ var toTopic = function(value){
 /// This method should be called on options object, to verify deprecated properties && lazy load dynamic ones
 /// @param should be string or object
 /// @returns options string or object
-var getOptions = function (options, type) {
-    /*jshint maxcomplexity: 6 */
+    var getOptions = function (options) {
 
     if (utils.isString(options)) {
         return options;
     }
 
     options = options || {};
-
-
-    switch(type) {
-        case 'eth':
 
             // make sure topics, get converted to hex
             options.topics = options.topics || [];
@@ -3486,9 +3444,6 @@ var getOptions = function (options, type) {
                 fromBlock: formatters.inputBlockNumberFormatter(options.fromBlock),
                 toBlock: formatters.inputBlockNumberFormatter(options.toBlock)
             };
-        case 'shh':
-            return options;
-    }
 };
 
 /**
@@ -3496,7 +3451,7 @@ Adds the callback and sets up the methods, to iterate over the results.
 
 @method getLogsAtStart
 @param {Object} self
-@param {function} callback
+    @param {funciton}
 */
 var getLogsAtStart = function(self, callback){
     // call getFilterLogs for the first watch callback start
@@ -3548,7 +3503,7 @@ var pollFilter = function(self) {
 
 };
 
-var Filter = function (options, type, requestManager, methods, formatter, callback, filterCreationErrorCallback) {
+    var Filter = function (requestManager, options, methods, formatter, callback, filterCreationErrorCallback) {
     var self = this;
     var implementation = {};
     methods.forEach(function (method) {
@@ -3556,7 +3511,7 @@ var Filter = function (options, type, requestManager, methods, formatter, callba
         method.attachToObject(implementation);
     });
     this.requestManager = requestManager;
-    this.options = getOptions(options, type);
+        this.options = getOptions(options);
     this.implementation = implementation;
     this.filterId = null;
     this.callbacks = [];
@@ -3568,9 +3523,7 @@ var Filter = function (options, type, requestManager, methods, formatter, callba
             self.callbacks.forEach(function(cb){
                 cb(error);
             });
-            if (typeof filterCreationErrorCallback === 'function') {
               filterCreationErrorCallback(error);
-            }
         } else {
             self.filterId = id;
 
@@ -3655,8 +3608,6 @@ module.exports = Filter;
 
 
 },{"../utils/utils":20,"./formatters":30}],30:[function(require,module,exports){
-'use strict'
-
 /*
     This file is part of web3.js.
 
@@ -3849,11 +3800,11 @@ var outputBlockFormatter = function(block) {
  * @returns {Object} log
 */
 var outputLogFormatter = function(log) {
-    if(log.blockNumber)
+        if(log.blockNumber !== null)
         log.blockNumber = utils.toDecimal(log.blockNumber);
-    if(log.transactionIndex)
+        if(log.transactionIndex !== null)
         log.transactionIndex = utils.toDecimal(log.transactionIndex);
-    if(log.logIndex)
+        if(log.logIndex !== null)
         log.logIndex = utils.toDecimal(log.logIndex);
 
     return log;
@@ -3932,9 +3883,6 @@ var inputAddressFormatter = function (address) {
 
 
 var outputSyncingFormatter = function(result) {
-    if (!result) {
-        return result;
-    }
 
     result.startingBlock = utils.toDecimal(result.startingBlock);
     result.currentBlock = utils.toDecimal(result.currentBlock);
@@ -3989,7 +3937,6 @@ module.exports = {
 
 var coder = require('../solidity/coder');
 var utils = require('../utils/utils');
-var errors = require('./errors');
 var formatters = require('./formatters');
 var sha3 = require('../utils/sha3');
 
@@ -4023,26 +3970,6 @@ SolidityFunction.prototype.extractDefaultBlock = function (args) {
 };
 
 /**
- * Should be called to check if the number of arguments is correct
- *
- * @method validateArgs
- * @param {Array} arguments
- * @throws {Error} if it is not
- */
-SolidityFunction.prototype.validateArgs = function (args) {
-    var inputArgs = args.filter(function (a) {
-      // filter the options object but not arguments that are arrays
-      return !( (utils.isObject(a) === true) &&
-                (utils.isArray(a) === false) &&
-                (utils.isBigNumber(a) === false)
-              );
-    });
-    if (inputArgs.length !== this._inputTypes.length) {
-        throw errors.InvalidNumberOfSolidityArgs();
-    }
-};
-
-/**
  * Should be used to create payload from arguments
  *
  * @method toPayload
@@ -4054,7 +3981,6 @@ SolidityFunction.prototype.toPayload = function (args) {
     if (args.length > this._inputTypes.length && utils.isObject(args[args.length -1])) {
         options = args[args.length - 1];
     }
-    this.validateArgs(args);
     options.to = this._address;
     options.data = '0x' + this.signature() + coder.encodeParams(this._inputTypes, args);
     return options;
@@ -4249,7 +4175,8 @@ SolidityFunction.prototype.attachToContract = function (contract) {
 
 module.exports = SolidityFunction;
 
-},{"../solidity/coder":7,"../utils/sha3":19,"../utils/utils":20,"./errors":26,"./formatters":30}],32:[function(require,module,exports){
+    
+    },{"../solidity/coder":7,"../utils/sha3":19,"../utils/utils":20,"./formatters":30}],32:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4274,9 +4201,12 @@ module.exports = SolidityFunction;
  * @date 2015
  */
 
+    "use strict";
+    
 var errors = require('./errors');
 
 // workaround to use httpprovider in different envs
+    // var XMLHttpRequest; // jshint ignore: line
 
 // browser
 if (typeof window !== 'undefined' && window.XMLHttpRequest) {
@@ -4291,11 +4221,9 @@ var XHR2 = require('xhr2'); // jshint ignore: line
 /**
  * HttpProvider should be used to send rpc calls over http
  */
-var HttpProvider = function (host, timeout, user, password) {
+    var HttpProvider = function (host, timeout) {
   this.host = host || 'http://localhost:8293';
   this.timeout = timeout || 0;
-  this.user = user;
-  this.password = password;
 };
 
 /**
@@ -4311,15 +4239,12 @@ HttpProvider.prototype.prepareRequest = function (async) {
   if (async) {
     request = new XHR2();
     request.timeout = this.timeout;
-  } else {
+        }else {
     request = new XMLHttpRequest();
   }
 
   request.open('POST', this.host, async);
-  if (this.user && this.password) {
-    var auth = 'Basic ' + new Buffer(this.user + ':' + this.password).toString('base64');
-    request.setRequestHeader('Authorization', auth);
-  } request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Content-Type','application/json');
   return request;
 };
 
@@ -4335,7 +4260,7 @@ HttpProvider.prototype.send = function (payload) {
 
   try {
     request.send(JSON.stringify(payload));
-  } catch (error) {
+        } catch(error) {
     throw errors.InvalidConnection(this.host);
   }
 
@@ -4343,7 +4268,7 @@ HttpProvider.prototype.send = function (payload) {
 
   try {
     result = JSON.parse(result);
-  } catch (e) {
+        } catch(e) {
     throw errors.InvalidResponse(request.responseText);
   }
 
@@ -4360,14 +4285,14 @@ HttpProvider.prototype.send = function (payload) {
 HttpProvider.prototype.sendAsync = function (payload, callback) {
   var request = this.prepareRequest(true);
 
-  request.onreadystatechange = function () {
+        request.onreadystatechange = function() {
     if (request.readyState === 4 && request.timeout !== 1) {
       var result = request.responseText;
       var error = null;
 
       try {
         result = JSON.parse(result);
-      } catch (e) {
+                } catch(e) {
         error = errors.InvalidResponse(request.responseText);
       }
 
@@ -4375,13 +4300,13 @@ HttpProvider.prototype.sendAsync = function (payload, callback) {
     }
   };
 
-  request.ontimeout = function () {
+        request.ontimeout = function() {
     callback(errors.ConnectionTimeout(this.timeout));
   };
 
   try {
     request.send(JSON.stringify(payload));
-  } catch (error) {
+        } catch(error) {
     callback(errors.InvalidConnection(this.host));
   }
 };
@@ -4392,7 +4317,7 @@ HttpProvider.prototype.sendAsync = function (payload, callback) {
  * @method isConnected
  * @return {Boolean} returns true if request haven't failed. Otherwise false
  */
-HttpProvider.prototype.isConnected = function () {
+    HttpProvider.prototype.isConnected = function() {
   try {
     this.send({
       id: 9999999999,
@@ -4401,7 +4326,7 @@ HttpProvider.prototype.isConnected = function () {
       params: []
     });
     return true;
-  } catch (e) {
+        } catch(e) {
     return false;
   }
 };
@@ -5005,7 +4930,7 @@ Method.prototype.extractCallback = function (args) {
  */
 Method.prototype.validateArgs = function (args) {
     if (args.length !== this.params) {
-        throw errors.InvalidNumberOfRPCParams();
+            throw errors.InvalidNumberOfParams();
     }
 };
 
@@ -5099,6 +5024,7 @@ Method.prototype.request = function () {
 
 module.exports = Method;
 
+    
 },{"../utils/utils":20,"./errors":26}],37:[function(require,module,exports){
 /*
     This file is part of web3.js.
@@ -5372,13 +5298,6 @@ var methods = function () {
         inputFormatter: [formatters.inputTransactionFormatter]
     });
 
-    var signTransaction = new Method({
-        name: 'signTransaction',
-        call: 'eth_signTransaction',
-        params: 1,
-        inputFormatter: [formatters.inputTransactionFormatter]
-    });
-
     var sign = new Method({
         name: 'sign',
         call: 'eth_sign',
@@ -5447,7 +5366,6 @@ var methods = function () {
         call,
         estimateGas,
         sendRawTransaction,
-        signTransaction,
         sendTransaction,
         sign,
         compileSolidity,
@@ -5505,8 +5423,8 @@ Eth.prototype.contract = function (abi) {
     return factory;
 };
 
-Eth.prototype.filter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'eth', this._requestManager, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
+    Eth.prototype.filter = function (fil, callback) {
+        return new Filter(this._requestManager, fil, watches.eth(), formatters.outputLogFormatter, callback);
 };
 
 Eth.prototype.namereg = function () {
@@ -5523,6 +5441,7 @@ Eth.prototype.isSyncing = function (callback) {
 
 module.exports = Eth;
 
+    
 },{"../../utils/config":18,"../../utils/utils":20,"../contract":25,"../filter":29,"../formatters":30,"../iban":33,"../method":36,"../namereg":44,"../property":45,"../syncing":48,"../transfer":49,"./watches":43}],39:[function(require,module,exports){
 /*
     This file is part of web3.js.
@@ -5631,25 +5550,6 @@ var methods = function () {
         inputFormatter: [null]
     });
 
-    var importRawKey = new Method({
-        name: 'importRawKey',
-		call: 'personal_importRawKey',
-		params: 2
-    });
-
-    var sign = new Method({
-        name: 'sign',
-		call: 'personal_sign',
-		params: 3,
-		inputFormatter: [null, formatters.inputAddressFormatter, null]
-    });
-
-    var ecRecover = new Method({
-        name: 'ecRecover',
-		call: 'personal_ecRecover',
-		params: 2
-    });
-
     var unlockAccount = new Method({
         name: 'unlockAccount',
         call: 'personal_unlockAccount',
@@ -5673,10 +5573,7 @@ var methods = function () {
 
     return [
         newAccount,
-        importRawKey,
         unlockAccount,
-        ecRecover,
-        sign,
         sendTransaction,
         lockAccount
     ];
@@ -5713,12 +5610,12 @@ module.exports = Personal;
 */
 /** @file shh.js
  * @authors:
- *   Fabian Vogelsteller <fabian@ethereum.org>
- *   Marek Kotewicz <marek@ethcore.io>
- * @date 2017
+     *   Marek Kotewicz <marek@ethdev.com>
+     * @date 2015
  */
 
 var Method = require('../method');
+    var formatters = require('../formatters');
 var Filter = require('../filter');
 var watches = require('./watches');
 
@@ -5733,114 +5630,56 @@ var Shh = function (web3) {
     });
 };
 
-Shh.prototype.newMessageFilter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'shh', this._requestManager, watches.shh(), null, callback, filterCreationErrorCallback);
+    Shh.prototype.filter = function (fil, callback) {
+        return new Filter(this._requestManager, fil, watches.shh(), formatters.outputPostFormatter, callback);
 };
 
 var methods = function () {
 
-    return [
-        new Method({
-            name: 'version',
-            call: 'shh_version',
-            params: 0
-        }),
-        new Method({
-            name: 'info',
-            call: 'shh_info',
-            params: 0
-        }),
-        new Method({
-            name: 'setMaxMessageSize',
-            call: 'shh_setMaxMessageSize',
-            params: 1
-        }),
-        new Method({
-            name: 'setMinPoW',
-            call: 'shh_setMinPoW',
-            params: 1
-        }),
-        new Method({
-            name: 'markTrustedPeer',
-            call: 'shh_markTrustedPeer',
-            params: 1
-        }),
-        new Method({
-            name: 'newKeyPair',
-            call: 'shh_newKeyPair',
-            params: 0
-        }),
-        new Method({
-            name: 'addPrivateKey',
-            call: 'shh_addPrivateKey',
-            params: 1
-        }),
-        new Method({
-            name: 'deleteKeyPair',
-            call: 'shh_deleteKeyPair',
-            params: 1
-        }),
-        new Method({
-            name: 'hasKeyPair',
-            call: 'shh_hasKeyPair',
-            params: 1
-        }),
-        new Method({
-            name: 'getPublicKey',
-            call: 'shh_getPublicKey',
-            params: 1
-        }),
-        new Method({
-            name: 'getPrivateKey',
-            call: 'shh_getPrivateKey',
-            params: 1
-        }),
-        new Method({
-            name: 'newSymKey',
-            call: 'shh_newSymKey',
-            params: 0
-        }),
-        new Method({
-            name: 'addSymKey',
-            call: 'shh_addSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'generateSymKeyFromPassword',
-            call: 'shh_generateSymKeyFromPassword',
-            params: 1
-        }),
-        new Method({
-            name: 'hasSymKey',
-            call: 'shh_hasSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'getSymKey',
-            call: 'shh_getSymKey',
-            params: 1
-        }),
-        new Method({
-            name: 'deleteSymKey',
-            call: 'shh_deleteSymKey',
-            params: 1
-        }),
-
-        // subscribe and unsubscribe missing
-
-        new Method({
-            name: 'post',
-            call: 'shh_post',
+        var post = new Method({
+            name: 'post', 
+            call: 'shh_post', 
             params: 1,
-            inputFormatter: [null]
-        })
+            inputFormatter: [formatters.inputPostFormatter]
+        });
+    
+        var newIdentity = new Method({
+            name: 'newIdentity',
+            call: 'shh_newIdentity',
+            params: 0
+        });
+    
+        var hasIdentity = new Method({
+            name: 'hasIdentity',
+            call: 'shh_hasIdentity',
+            params: 1
+        });
+    
+        var newGroup = new Method({
+            name: 'newGroup',
+            call: 'shh_newGroup',
+            params: 0
+        });
+    
+        var addToGroup = new Method({
+            name: 'addToGroup',
+            call: 'shh_addToGroup',
+            params: 0
+        });
+
+        return [
+            post,
+            newIdentity,
+            hasIdentity,
+            newGroup,
+            addToGroup
     ];
 };
 
 module.exports = Shh;
 
 
-},{"../filter":29,"../method":36,"./watches":43}],42:[function(require,module,exports){
+    },{"../filter":29,"../formatters":30,"../method":36,"./watches":43}],42:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -5862,7 +5701,7 @@ module.exports = Shh;
  * @author Alex Beregszaszi <alex@rtfs.hu>
  * @date 2016
  *
- * Reference: https://github.com/ethereum/go-ethereum/blob/swarm/internal/web3ext/web3ext.go#L33
+     * Reference: https://github.com/nekonium/go-nekonium/blob/swarm/internal/web3ext/web3ext.go#L33
  */
 
 "use strict";
@@ -6065,28 +5904,35 @@ var eth = function () {
 
 /// @returns an array of objects describing web3.shh.watch api methods
 var shh = function () {
-
-    return [
-        new Method({
+        var newFilter = new Method({
             name: 'newFilter',
-            call: 'shh_newMessageFilter',
+            call: 'shh_newFilter',
             params: 1
-        }),
-        new Method({
+        });
+    
+        var uninstallFilter = new Method({
             name: 'uninstallFilter',
-            call: 'shh_deleteMessageFilter',
+            call: 'shh_uninstallFilter',
             params: 1
-        }),
-        new Method({
+        });
+    
+        var getLogs = new Method({
             name: 'getLogs',
-            call: 'shh_getFilterMessages',
+            call: 'shh_getMessages',
             params: 1
-        }),
-        new Method({
+        });
+    
+        var poll = new Method({
             name: 'poll',
-            call: 'shh_getFilterMessages',
+            call: 'shh_getFilterChanges',
             params: 1
-        })
+        });
+    
+        return [
+            newFilter,
+            uninstallFilter,
+            getLogs,
+            poll
     ];
 };
 
