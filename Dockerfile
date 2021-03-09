@@ -14,4 +14,4 @@ EXPOSE 28568/udp
 
 VOLUME /root
 
-ENTRYPOINT ["gnekonium", "--fast", "--cache=512", "--rpc", "--rpcaddr 0.0.0.0"]
+ENTRYPOINT ["gnekonium", "--fast", "--cache=512", "--rpc", "--rpcaddr", "0.0.0.0"]
